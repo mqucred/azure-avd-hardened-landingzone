@@ -18,6 +18,9 @@ This project demonstrates an enterprise-grade, Zero Trust-compliant Azure Virtua
 
 ## Architectural Highlights
 
+<img width="1753" height="789" alt="Image" src="https://github.com/user-attachments/assets/24a81356-308f-4c9a-a4f4-a38a1796f963" />
+
+
 * **Zero Inbound Surface:** Session hosts deployed without public IPs; RDP traffic is brokered over TLS via Azure's reverse-connect architecture.
 * **Deterministic Egress:** Outbound internet traffic (Entra ID tokens, AVD agent communication, CRL checks) is strictly routed through a dedicated static NAT Gateway IP (`pip-nat-avd-prod-01`).
 * **Cloud-Native Identity:** Session hosts join Microsoft Entra ID directly, eliminating domain controller overhead while enforcing fine-grained Role-Based Access Control (RBAC).
@@ -87,4 +90,8 @@ targetisaadjoined:i:1;
 ## Validation Proof
 Published workspace and `SessionDesktop` entitlement view.
 
+<img width="1835" height="1078" alt="Image" src="https://github.com/user-attachments/assets/acd46c86-a143-4b6d-a634-f5e3691d0741" />
+
 Active remote desktop session in browser displaying `hostname` execution (`vm-avd-sh-0`).
+
+<img width="1841" height="1078" alt="Image" src="https://github.com/user-attachments/assets/5ee7144e-bccf-4978-b9b9-9dc2eb99ee4a" />
