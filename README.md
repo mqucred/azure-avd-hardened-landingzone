@@ -2,6 +2,15 @@
 
 <img width="5086" height="3958" alt="Image" src="https://github.com/user-attachments/assets/c1bde482-1e95-4a9d-9236-0ba99257311d" />
 
+## Enterprise Governance & ALZ Hierarchy
+
+To align with Microsoft Cloud Adoption Framework (CAF) best practices, the environment is governed under a structured Enterprise Scale Management Group hierarchy.
+
+<img width="1753" height="789" alt="Image" src="https://github.com/user-attachments/assets/24a81356-308f-4c9a-a4f4-a38a1796f963" />
+
+* **Management Group Structure:** Established dedicated hierarchy branches (`Platform`, `Workloads`, `Sandbox`) under `Contoso Enterprise Root` (`mg-contoso-root`).
+* **Subscription Placement:** Positioned the platform subscription (`sub-ent-platform-prod`) under `Platform` > `Connectivity` (`mg-connectivity`) to enforce strict governance and centralized policy inheritance for network infrastructure.
+
 ## Executive Summary
 
 This project demonstrates an enterprise-grade, Zero Trust-compliant Azure Virtual Desktop (AVD) deployment using Microsoft Entra ID Join and private network topology. Session hosts are isolated from direct inbound internet exposure, utilizing reverse-connect transport for remote user sessions and a dedicated Azure NAT Gateway for deterministic outbound outbound egress.
@@ -17,8 +26,6 @@ This project demonstrates an enterprise-grade, Zero Trust-compliant Azure Virtua
 ---
 
 ## Architectural Highlights
-
-<img width="1753" height="789" alt="Image" src="https://github.com/user-attachments/assets/24a81356-308f-4c9a-a4f4-a38a1796f963" />
 
 
 * **Zero Inbound Surface:** Session hosts deployed without public IPs; RDP traffic is brokered over TLS via Azure's reverse-connect architecture.
