@@ -2,6 +2,35 @@
 
 <img width="5086" height="3958" alt="Image" src="https://github.com/user-attachments/assets/c1bde482-1e95-4a9d-9236-0ba99257311d" />
 
+```mermaid
+sequenceDiagram
+    autonumber
+    participant User as User / Client App
+    participant Entra as Microsoft Entra ID
+    participant AVD as AVD Control Plane
+    participant Host as Session Host (Private Subnet)
+    participant NAT as Azure NAT Gateway
+    participant Storage as Private Endpoint (Storage)
+
+    %% Step 1: Authentication & Token Issuance
+    Note over User, Entra: Phase 1: Identity Verification & Auth
+    User->>Entra: Authenticate User (MFA & Conditional Access)
+    Entra-->>User: Issue Token + Host Pool RDP Property (targetisaadjoined:i:1)
+
+    %% Step 2: Reverse Connect Transport Setup
+    Note over Host, AVD: Phase 2: Reverse Connect Transport (Zero Inbound Ports)
+    Host->>NAT: Initiate Outbound TLS Tunnel to AVD Broker
+    NAT->>AVD: Outbound Egress via Static Public IP
+    User->>AVD: Present Session Auth Token
+    AVD->>Host: Validate Token & Stitch Traffic over Established Tunnel
+    Host-->>User: Active Encrypted Session Established (No Public IP on VM)
+
+    %% Step 3: Storage & Profile Mounting
+    Note over Host, Storage: Phase 3: Secure Profile Attachment
+    Host->>Storage: Mount FSLogix Container via Private Link (snet-pe)
+    Storage-->>Host: Profile Attached (Zero Internet Exposure)
+```
+
 ## Enterprise Governance & ALZ Hierarchy
 
 To align with Microsoft Cloud Adoption Framework (CAF) best practices, the environment is governed under a structured Enterprise Scale Management Group hierarchy.
