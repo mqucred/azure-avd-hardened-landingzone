@@ -24,7 +24,7 @@ $VMNamePrefix      = "vm-avd-sh"
 $VMCount           = 2
 $VMSize            = "Standard_D2s_v5"
 $AdminUsername     = "localadmin"
-$AdminPassword     = ConvertTo-SecureString "P@ssw0rd2026!AVD" -AsPlainText -Force
+$AdminPassword     = ConvertTo-SecureString "Secure_StringXXXX" -AsPlainText -Force
 
 $Tags = @{
     "Environment"  = "Production"
