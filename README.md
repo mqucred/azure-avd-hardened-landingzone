@@ -1,5 +1,7 @@
 # Enterprise Zero Trust Azure Virtual Desktop (AVD) Landing Zone
 
+<img width="5086" height="3958" alt="Image" src="https://github.com/user-attachments/assets/c1bde482-1e95-4a9d-9236-0ba99257311d" />
+
 ## Executive Summary
 
 This project demonstrates an enterprise-grade, Zero Trust-compliant Azure Virtual Desktop (AVD) deployment using Microsoft Entra ID Join and private network topology. Session hosts are isolated from direct inbound internet exposure, utilizing reverse-connect transport for remote user sessions and a dedicated Azure NAT Gateway for deterministic outbound outbound egress.
@@ -83,6 +85,6 @@ targetisaadjoined:i:1;
 ---
 
 ## Validation Proof
+Published workspace and `SessionDesktop` entitlement view.
 
-* **`11-avd-web-client-workspace.png`**: Published workspace and `SessionDesktop` entitlement view.
-* **`12-avd-active-session.png`**: Active remote desktop session in browser displaying `hostname` execution (`vm-avd-sh-0`).
+Active remote desktop session in browser displaying `hostname` execution (`vm-avd-sh-0`).
